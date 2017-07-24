@@ -202,7 +202,8 @@ Due to the fact that DNS is effortful and wasting resources if a fully resolved 
 \newline
 Simulating only the larger-scale motions is also called filtering, which means that the smaller-scale motions are filtered out. To model the filtered smaller-scale motions ususally a subgrid-scale (SGS) model is used and this method is also called an implicit LES (ILES) \cite{turbulentFlows}. %als Zitat die Dissertation TUM
 \subsection{Particle clustering}
-Due to the high number of point particles even more computational resources 
+\nomenclature{$m_\mathrm{c}$}{number of clustered particles}
+The high number of point particles require even more computational resources for the particle-laden simulation. The main idea to reduce this requirement is to create clusters of point particles, meaning that a new variable $m_\mathrm{c}$
 \pagebreak
 \newline
 \begin{equation}
