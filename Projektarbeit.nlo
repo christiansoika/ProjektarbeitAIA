@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \nomenclatureentry{a$\vec\nabla$@[{$\vec\nabla$}]\begingroup Nabla-operator\nomeqref {3.1}|nompageref}{5}
 \nomenclatureentry{a$\vec\Q$@[{$\vec\Q$}]\begingroup Container for conserved variables in the Navier-Stokes equations\nomeqref {3.1}|nompageref}{5}
 \nomenclatureentry{a$\vec{H}$@[{$\vec{H}$}]\begingroup Container for fluctuating variables in the Navier-Stokes equations\nomeqref {3.1}|nompageref}{5}
@@ -28,3 +29,35 @@
 \nomenclatureentry{a$\vec{v_\mathrm{p}}$@[{$\vec{v_\mathrm{p}}$}]\begingroup Particle velocity\nomeqref {3.12}|nompageref}{7}
 \nomenclatureentry{a$f_\mathrm{D}$@[{$f_\mathrm{D}$}]\begingroup Drag correction\nomeqref {3.13}|nompageref}{7}
 \nomenclatureentry{a$\tau_mathrm{p}$@[{$\tau_mathrm{p}$}]\begingroup Particle response time\nomeqref {3.13}|nompageref}{7}
+=======
+\nomenclatureentry{a$\vec\nabla$@[{$\vec\nabla$}]\begingroup Nabla-operator\nomeqref {3.1}|nompageref}{4}
+\nomenclatureentry{a$\vec\Q$@[{$\vec\Q$}]\begingroup Container for conserved variables in the Navier-Stokes equations\nomeqref {3.1}|nompageref}{4}
+\nomenclatureentry{a$\vec{H}$@[{$\vec{H}$}]\begingroup Container for fluctuating variables in the Navier-Stokes equations\nomeqref {3.1}|nompageref}{4}
+\nomenclatureentry{a$\rho$@[{$\rho$}]\begingroup Density\nomeqref {3.1}|nompageref}{4}
+\nomenclatureentry{a$\vec\u$@[{$\vec\u$}]\begingroup Three-dimensional velocity\nomeqref {3.1}|nompageref}{4}
+\nomenclatureentry{a$E$@[{$E$}]\begingroup Specific inner energy\nomeqref {3.1}|nompageref}{4}
+\nomenclatureentry{a$\vec{H^\mathrm{i}}$@[{$\vec{H^\mathrm{i}}$}]\begingroup Stores the inviscid variables in the flux-vector included in the Navier-Stokes equations\nomeqref {3.3}|nompageref}{4}
+\nomenclatureentry{a$\vec{H^\mathrm{v}}$@[{$\vec{H^\mathrm{v}}$}]\begingroup Stores the viscous variables in the flux-vector included in the Navier-Stokes equations\nomeqref {3.3}|nompageref}{4}
+\nomenclatureentry{a$p$@[{$p$}]\begingroup Pressure\nomeqref {3.4}|nompageref}{4}
+\nomenclatureentry{a$Re$@[{$Re$}]\begingroup Reynolds number\nomeqref {3.5}|nompageref}{4}
+\nomenclatureentry{a$\matrix{\tau}$@[{$\matrix{\tau}$}]\begingroup Stress tensor\nomeqref {3.5}|nompageref}{4}
+\nomenclatureentry{a$\vec{q}$@[{$\vec{q}$}]\begingroup Heat conduction\nomeqref {3.5}|nompageref}{4}
+\nomenclatureentry{a$e$@[{$e$}]\begingroup Specific internal energy\nomeqref {3.6}|nompageref}{5}
+\nomenclatureentry{a$Pr$@[{$Pr$}]\begingroup Prandtl number\nomeqref {3.7}|nompageref}{5}
+\nomenclatureentry{a$\mu$@[{$\mu$}]\begingroup Dynamic viscosity\nomeqref {3.7}|nompageref}{5}
+\nomenclatureentry{a$c_p$@[{$c_p$}]\begingroup Specific isobaric heat capacity\nomeqref {3.8}|nompageref}{5}
+\nomenclatureentry{a$c_v$@[{$c_v$}]\begingroup Specific isochoric heat capacity\nomeqref {3.8}|nompageref}{5}
+\nomenclatureentry{a$k_t$@[{$k_t$}]\begingroup thermal conductivity\nomeqref {3.9}|nompageref}{5}
+\nomenclatureentry{a$\matrix{I}$@[{$\matrix{I}$}]\begingroup Identity tensor\nomeqref {3.10}|nompageref}{5}
+\nomenclatureentry{a$\matrix{S}$@[{$\matrix{S}$}]\begingroup Rate-of-strain-tensor\nomeqref {3.10}|nompageref}{5}
+\nomenclatureentry{a$T$@[{$T$}]\begingroup Temperature\nomeqref {3.10}|nompageref}{5}
+\nomenclatureentry{a$S$@[{$S$}]\begingroup Sutherland temperature\nomeqref {3.11}|nompageref}{5}
+\nomenclatureentry{a$R$@[{$R$}]\begingroup Universal gas constant\nomeqref {3.11}|nompageref}{5}
+\nomenclatureentry{a$r_p$@[{$r_p$}]\begingroup Particle radius\nomeqref {3.11}|nompageref}{6}
+\nomenclatureentry{a$\eta$@[{$\eta$}]\begingroup Kolomogorov scale\nomeqref {3.11}|nompageref}{6}
+\nomenclatureentry{a$\rho_\mathrm{p}$@[{$\rho_\mathrm{p}$}]\begingroup Particle density\nomeqref {3.11}|nompageref}{6}
+\nomenclatureentry{a$\vec{x_\mathrm{p}}$@[{$\vec{x_\mathrm{p}}$}]\begingroup Particle position\nomeqref {3.12}|nompageref}{6}
+\nomenclatureentry{a$\vec{v_\mathrm{p}}$@[{$\vec{v_\mathrm{p}}$}]\begingroup Particle velocity\nomeqref {3.12}|nompageref}{6}
+\nomenclatureentry{a$f_mathrm{D}$@[{$f_mathrm{D}$}]\begingroup Drag correction\nomeqref {3.13}|nompageref}{6}
+\nomenclatureentry{a$\tau_mathrm{p}$@[{$\tau_mathrm{p}$}]\begingroup Particle response time\nomeqref {3.13}|nompageref}{6}
+>>>>>>> cdebf8b661fc29ce09045a5702799034be652ca5
