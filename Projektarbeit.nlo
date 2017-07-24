@@ -26,5 +26,5 @@
 \nomenclatureentry{a$\rho_\mathrm{p}$@[{$\rho_\mathrm{p}$}]\begingroup Particle density\nomeqref {3.11}|nompageref}{7}
 \nomenclatureentry{a$\vec{x_\mathrm{p}}$@[{$\vec{x_\mathrm{p}}$}]\begingroup Particle position\nomeqref {3.12}|nompageref}{7}
 \nomenclatureentry{a$\vec{v_\mathrm{p}}$@[{$\vec{v_\mathrm{p}}$}]\begingroup Particle velocity\nomeqref {3.12}|nompageref}{7}
-\nomenclatureentry{a$f_mathrm{D}$@[{$f_mathrm{D}$}]\begingroup Drag correction\nomeqref {3.13}|nompageref}{7}
+\nomenclatureentry{a$f_\mathrm{D}$@[{$f_\mathrm{D}$}]\begingroup Drag correction\nomeqref {3.13}|nompageref}{7}
 \nomenclatureentry{a$\tau_mathrm{p}$@[{$\tau_mathrm{p}$}]\begingroup Particle response time\nomeqref {3.13}|nompageref}{7}
