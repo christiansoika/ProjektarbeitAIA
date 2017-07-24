@@ -149,6 +149,31 @@ Siewert:
 -3.1a-3.14 (spherical particles) OHNE GRAVITATION
 Stokes Drag/Stokes Coefficient
 Filterung (Fritz) ->Viskositaet durch numerischen Fehler, Smagorinksy nicht benutzen
+
+To get a usefuell equation of motion for the particles in the flow, we use the Euler Lagrangian approach, as it is common in Direct Numerical Simulations (DNS) and Large Eddy Simulations (LES).
+In this work we deal with small and heavy particles, that have a spherical shape. Their radius $ r_p $ is even smaller than the Kolmogorov scale $ \eta $, but also large enough to neglect the Brownian motion. The density of the particles $ \rho_\mathrm{p} $ is much higher than that of the fluid $ \rho_\mathrm{f} $ . In addition due to the very low particle concentration we can neglect the influence of the particles on the mean flow and on each other. This simplification is called one-way coupling. That means that the particles can cross each other without any effect. That means particle collisions are neglected.
+After all this simplifications we obtain a simplified version of the Maxey-Riley equations. 
+\nomenclature{$r_p$}{Particle radius}
+\nomenclature{$\eta$}{Kolomogorov scale}
+\nomenclature{$\rho_\mathrm{p}$}{Particle density}
+\begin{equation}
+ \frac{\partial{\vec{x_\mathrm{p}}}}{\partial{t}} = \vec{v_\mathrm{p}}
+\end{equation}
+\nomenclature{$\vec{x_\mathrm{p}}$}{Particle position}
+\nomenclature{$\vec{v_\mathrm{p}}$}{Particle velocity}
+\begin{equation}
+ \frac{\partial{\vec{v_\mathrm{p}}}}{\partial{t}} = \frac{f_\mathrm{D}}{\tau_\mathrm{p}} (\vec{u(x_\mathrm{p})} - \vec{v_\mathrm{p}})
+ \end{equation}
+ \nomenclature{$f_mathrm{D}$}{Drag correction}
+ \nomenclature{$\tau_mathrm{p}$}{Particle response time}
+ It shows that the particle motion is only depending on the the hydrodynamical drag force which results out of the actual difference between the fluid velocity $\vec{u(x_mathrm{p})}$ at particle position $\vec{x_p}$ and the particle velocity $\vec{v_p}$.
+ $\tau_mathrm{p}$ is the particle response time and a factor to obtain the drag force in Stokes flow conditions.
+ To take the case of an Reynolds number $\Re$ of order 1 into account the correction factor 
+ \begin{equation}
+ f_D = 1 + 0.15 Re_p^\mathrm{0.687} 
+ \end{equation}
+ is used.
+The biggest simplification of this Lagrangian approach is that the interaction of particles coming close together is neglected.
 \pagebreak
 \section{Numerical methods} %Julian
 To simulate flows like those described above we have two options. The direct numerical simulation (DNS) is the easier one to understand, although it is numerically very expensive. The Large-eddy simulation (LES) is numerically more capable, still we must accept certain inaccuracies. These two numerical methods are now discussed in the following chapter.
