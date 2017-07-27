@@ -79,13 +79,13 @@ they can be written in the so-called 'divergence form':
   \frac{\partial{\vec{Q}}}{\partial{t}} + \vec\nabla \vec{H} = 0
 \end{equation}
 \nomenclature{$\vec\nabla$}{Nabla-operator} %Erstellt automatisch die Nomenclature-Liste
-\nomenclature{$\vec\Q$}{Container for conserved variables in the Navier-Stokes equations}
+\nomenclature{$\vec{Q}$}{Container for conserved variables in the Navier-Stokes equations}
 \nomenclature{$\vec{H}$}{Container for fluctuating variables in the Navier-Stokes equations}
 It should be noted by the reader that this work only contains investigations about chemically inert fluids and particles, and that the simulation results
 only fit under this condition. The vector $ \vec{Q} $ contains all the variables which are conserved, i.e. the density $ \rho $, 
 the velocity $ \vec{u} $ and the specific inner energy $ E $: 
 \nomenclature{$\rho$}{Density}
-\nomenclature{$\vec\u$}{Three-dimensional velocity}
+\nomenclature{$\vec{u}$}{Three-dimensional velocity}
 \nomenclature{$E$}{Specific inner energy}
 \begin{equation}
  \vec{Q}= \left( \begin{array}{c}\rho\\\rho \vec{u}\\\rho E \end{array} \right)
@@ -202,16 +202,34 @@ Due to the fact that DNS is effortful and wasting resources if a fully resolved 
 \newline
 Simulating only the larger-scale motions is also called filtering, which means that the smaller-scale motions are filtered out. To model the filtered smaller-scale motions ususally a subgrid-scale (SGS) model is used. According to Hickel (2007) the interference between explicit SGS and the trunctation error can be exploited, i.e. the trunctation error can serve as model of the effects of unresolved scales, which is therefore an implicit SGS model. Thus we call it implicit LES (ILES) \cite{implicitLES}. %als Zitat die Dissertation TUM Hickel
 \subsection{Discretisation}
-Time integration of the particle equation of motion
+To integrate the Lagrangian particle tracking equations, discussed above, a predictor-corrector scheme based on the trapezoidal rule for numerical integration
+\begin{equation}
+f (t + \delta t) \approx f(t) + \frac{\delta t}{2} \left[ \frac{\partial f(t)}{\partial t} + \frac{\partial f(t + \delta t)}{\partial t} \right ]
+\end{equation}
+is used.
+\newline
+The first step is the prediction of the new particle position $\vec{x}_{n+1}^\mathrm{(p)}$ using a Taylor expansion for a small time step $\delta t$
+\nomenclature{$\vec{x}}{particle position}% ++ nomenclature funktioniert noch nicht! ++
+\nomenclature{$\vec{v}}{particle velocity}% ++ nomenclature funktioniert noch nicht! ++
+\nomenclature{$\vec{a}}{particle acceleration}% ++ nomenclature funktioniert noch nicht! ++
+\begin{equation}
+\vec{x}_{n+1}^\mathrm{(p)} = \vec{x}_n + \delta t \vec{v}_n + \frac{1}{2} \delta t^2 \vec{a}_n.
+\end{equation}
+Due to the computational effort we will put $\vec{u}_{n+1}^\mathrm{(p)}$ on the level of the nearest cell fluid velocity.
+\newline
+The updated velocity and acceleration are calculated as
+\begin{equation}
+\vec{v}_{n+1} = \frac{\vec{v}_n + \frac{1}{2} \delta t \left(\vec{a}_n + \frac{f_\mathrm{D}}{\tau_\mathrm{p}}\vec{u}_{n+1}^\mathrm{(p)} + \vec{g} \right)}{1 + \frac{1}{2} \frac{f_\mathrm{D}}{\tau_\mathrm{p}} \delta t}
+\end{equation}
+\begin{equation}
+\vec{a}_{n+1} = \frac{\vec{v}_n + \frac{1}{2} \delta t \left(\vec{u}_{n+1}^\mathrm{(p)} - \vec{v}_n - \frac{1}{2} \delta t \vec{a}_n \right) + \vec{g}}{1 + \frac{1}{2} \frac{f_\mathrm{D}}{\tau_\mathrm{p}} \delta t}
+\end{equation}
 \subsection{Particle clustering}
 \nomenclature{$m_\mathrm{c}$}{number of clustered particles}% ++ nomenclature funktioniert noch nicht! ++
 The high number of point particles require even more computational resources for the particle-laden simulation. The main idea to reduce this requirement is to create clusters of point particles, meaning that a new variable $m_\mathrm{c}$ is introduced. We consider a cluster of $m_\mathrm{c}$ point particles as one larger point particle, i.e. the programm has less particles to simulate. To compensate this lack of particles, the coupling force is multiplied by $m_\mathrm{c}$, due to the $m_\mathrm{c}$-fold mass of the (cluster-)particles. In chapter 5 (results) we evaluate the legitimacy of particle clustering and the maximum acceptable value of $m_\mathrm{c}$.
 \pagebreak
 \newline
-\begin{equation}
- \mu (T) = \mu_\infty (\frac{T}{t_\infty})^{3/2} \frac{T_\infty + S}{T + S}
-\end{equation}
-Projektion (noComputationalParticles)
+Projektion (noComputationalParticles), Diskretisierung
 implizite LES (Motivation fuer LES -  Pope Chapter 9, Bild 9.4), DNS
 \pagebreak
 \section{Results}
