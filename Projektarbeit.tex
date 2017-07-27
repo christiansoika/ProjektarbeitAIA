@@ -65,7 +65,7 @@
 in Computational Methods for Multiphase Flow ist auf den Seiten 3-9 ein interessantes Beispiel.
 \pagebreak
 \section{Mathematical models}
-Sollen wir hier noch isotrope Turbulenz etc. erklaeren?
+Sollen wir hier noch isotrope Turbulenz etc. erklaeren? Entdimensionierung erklären (Christain), Kolmogorov Skala (Steffen), Stokes-Zahl, $\psi$ einführen als coupling rate einführen
 \subsection{Single-phase flow} %Christian
 In this section the mathematical basics for understanding and simulating turbulent flows are discussed. However, it should be pointed out that this is no
 complete treatise of the mathematical and physical basics. The reader can achieve further insight on this topic by looking at different books and papers, 
@@ -196,14 +196,16 @@ The biggest simplification of this Lagrangian approach is that the interaction o
 \section{Numerical methods} %Julian
 To simulate flows like those described above we have two options. The direct numerical simulation (DNS) is the easier one to understand, although it is numerically very expensive. The Large-eddy simulation (LES) is numerically more capable, still we must accept certain inaccuracies. These two numerical methods are now discussed in the following chapter.
 \subsection{Direct numerical simulation}
-The basis of the direct numerical simulation (DNS) are the Navier-Stokes equations as described above. The idea is that the computer is very good at calculating and solves these equations completely. This provides a very accurate result, as all scales of motion are being resolved. Still it requires an immense level of comptational resources which increases rapidly with the Reynolds number. These computational resources were not available until the 1970s. Even though it is not advisable to resolve every scale of motion, if only the contained energy is of greatest interest. With the large-eddy simulation, as described below, the comptational effort is 99.98 \% less compared to DNS, which indeed is the fraction of the dissipative scale. This leaves 0.02 \% of the flow, which is correlative with the fraction of the energy-containing larger-scale \cite{turbulentFlows}.% ++zum Uebergang zu LES siehe Pope S. 352 und Fig. 9.4++
+The basis of the direct numerical simulation (DNS) are the Navier-Stokes equations as described above. The idea is that the computer is very good at calculating and solves these equations completely. This provides a very accurate result, as all scales of motion are being resolved. Still it requires an immense level of comptational resources which increases rapidly with the Reynolds number. These computational resources were not available until the 1970s. Even though it is not advisable to resolve every scale of motion, if only the contained energy is of greatest interest. With the large-eddy simulation, as described below, the comptational effort is 99.98 \% less compared to DNS, which indeed is the fraction of the dissipative scale. This leaves 0.02 \% of the flow, which is correlative with the fraction of the energy-containing larger-scale \cite{turbulentFlows}.%zum Uebergang zu LES siehe Pope S. 352 und Fig. 9.4
 \subsection{Large-eddy simulation}
 Due to the fact that DNS is effortful and wasting resources if a fully resolved resolution is not required, large-eddy simulation (LES) was created to save time and resources. This is especially efficient if mainly the temproal energy trend is considered, because the energy containing larger-scale motion is completely resolved and the indeed small effects of the expensive smaller-scale motion are just modelled. Otherwise in DNS resolving the small dissipative scale would require most of the computational resources.
 \newline
-Simulating only the larger-scale motions is also called filtering, which means that the smaller-scale motions are filtered out. To model the filtered smaller-scale motions ususally a subgrid-scale (SGS) model is used. According to Hickel (2007) the interference between explicit SGS and the trunctation error can be exploited, i.e. the trunctation error can serve as model of the effects of unresolved scales, which is therefore an implicit SGS model. Thus we call it implicit LES (ILES) \cite{dissertation}. %als Zitat die Dissertation TUM Hickel
+Simulating only the larger-scale motions is also called filtering, which means that the smaller-scale motions are filtered out. To model the filtered smaller-scale motions ususally a subgrid-scale (SGS) model is used. According to Hickel (2007) the interference between explicit SGS and the trunctation error can be exploited, i.e. the trunctation error can serve as model of the effects of unresolved scales, which is therefore an implicit SGS model. Thus we call it implicit LES (ILES) \cite{implicitLES}. %als Zitat die Dissertation TUM Hickel
+\subsection{Discretisation}
+Time integration of the particle equation of motion
 \subsection{Particle clustering}
-\nomenclature{$m_\mathrm{c}$}{number of clustered particles}
-The high number of point particles require even more computational resources for the particle-laden simulation. The main idea to reduce this requirement is to create clusters of point particles, meaning that a new variable $m_\mathrm{c}$
+\nomenclature{$m_\mathrm{c}$}{number of clustered particles}% ++ nomenclature funktioniert noch nicht! ++
+The high number of point particles require even more computational resources for the particle-laden simulation. The main idea to reduce this requirement is to create clusters of point particles, meaning that a new variable $m_\mathrm{c}$ is introduced. We consider a cluster of $m_\mathrm{c}$ point particles as one larger point particle, i.e. the programm has less particles to simulate. To compensate this lack of particles, the coupling force is multiplied by $m_\mathrm{c}$, due to the $m_\mathrm{c}$-fold mass of the (cluster-)particles. In chapter 5 (results) we evaluate the legitimacy of particle clustering and the maximum acceptable value of $m_\mathrm{c}$.
 \pagebreak
 \newline
 \begin{equation}
@@ -225,6 +227,9 @@ The turbulence was initialised using a seed-based random generator. To achieve p
 at which a restart file was written out. This procedure insures a fully developed turbulent 
 flow, which has emancipated from the initialisation. In this flow field, a specific number of spherical particles were injected. 
 The velocties of the fluid were interpolated for each particle to match the velocities of particles and fluid as accurately as possible.
+
+Parameter der Simulationen
+Coupling Rate in Zusammenhang mit den unterscheidlichen noComputationalParticles
 
 boundary conditions, for example Reynolds number?
 
