@@ -31,25 +31,7 @@
 
 \begin{document}
 
-\begin{titlepage}
-	\centering
-	%\includegraphics[width=0.15\textwidth]{example-image-1x1}\par\vspace{1cm}
-	{\scshape\LARGE RWTH Aachen University \par}
-	\vspace{1cm}
-	{\scshape\Large Project Thesis\par}
-	\vspace{1.5cm}
-	{\huge\bfseries Investigations on one-way coupling effects of particle-laden decaying isotropic turbulent flows \par}
-	\vspace{2cm}
-	{\Large\itshape Julian Stemmermann, Steffen Trienekens \& Christian Soika\par}
-\vfill
-	supervised by\par
-	Konstantin \textsc{Fr\"ohlich}
-
-\vfill
-
-% Bottom of the page
-	{\large \today\par}
-\end{titlepage}
+\maketitle
 
 \pagebreak
 
@@ -196,19 +178,10 @@ The biggest simplification of this Lagrangian approach is that the interaction o
 \section{Numerical methods} %Julian
 To simulate flows like those described above we have two options. The direct numerical simulation (DNS) is the easier one to understand, although it is numerically very expensive. The Large-eddy simulation (LES) is numerically more capable, still we must accept certain inaccuracies. These two numerical methods are now discussed in the following chapter.
 \subsection{Direct numerical simulation}
-The basis of the direct numerical simulation (DNS) are the Navier-Stokes equations as described above. The idea is that the computer is very good at calculating and solves these equations completely. This provides a very accurate result, as all scales of motion are being resolved. Still it requires an immense level of comptational resources which increases rapidly with the Reynolds number. These computational resources were not available until the 1970s \cite{turbulentFlows}. ++zum Uebergang zu LES siehe Pope S. 352 und Fig. 9.4++
-\subsection{Large-eddy simulation}
-Due to the fact that DNS is effortful and wasting resources if a fully resolved resolution is not required, large-eddy simulation (LES) was created to save time and resources. This is especially efficient if mainly the temproal energy trend is considered, because the energy containing larger-scale motion is completely resolved and the indeed small effects of the expensive smaller-scale motion are just modelled. Otherwise in DNS resolving the small dissipative scale would require most of the computational resources.
+The basis of the direct numerical simulation (DNS) are the Navier-Stokes equations as described above. The idea is that the computer is very good at calculating and solves these equations completely. This provides us a very accurate result, as all scales of motion are being resolved. Still it requires an immense level of comptational resources which increases rapidly with the Reynolds number. These computational resources were not available until the 1970s \cite{turbulentFlows}.
 \newline
-Simulating only the larger-scale motions is also called filtering, which means that the smaller-scale motions are filtered out. To model the filtered smaller-scale motions ususally a subgrid-scale (SGS) model is used and this method is also called an implicit LES (ILES) \cite{turbulentFlows}. %als Zitat die Dissertation TUM
-\subsection{Particle clustering}
-Due to the high number of point particles even more computational resources 
 \pagebreak
-\newline
-\begin{equation}
- \mu (T) = \mu_\infty (\frac{T}{t_\infty})^{3/2} \frac{T_\infty + S}{T + S}
-\end{equation}
-Projektion (noComputationalParticles)
+Pojektion (noComputationalParticles)
 implizite LES (Motivation fuer LES -  Pope Chapter 9, Bild 9.4), DNS
 \pagebreak
 \section{Results}
