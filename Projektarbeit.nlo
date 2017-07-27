@@ -28,3 +28,4 @@
 \nomenclatureentry{a$\vec{v_\mathrm{p}}$@[{$\vec{v_\mathrm{p}}$}]\begingroup Particle velocity\nomeqref {3.12}|nompageref}{7}
 \nomenclatureentry{a$f_\mathrm{D}$@[{$f_\mathrm{D}$}]\begingroup Drag correction\nomeqref {3.13}|nompageref}{7}
 \nomenclatureentry{a$\tau_mathrm{p}$@[{$\tau_mathrm{p}$}]\begingroup Particle response time\nomeqref {3.13}|nompageref}{7}
+\nomenclatureentry{a$m_\mathrm{c}$@[{$m_\mathrm{c}$}]\begingroup number of clustered particles\nomeqref {4.0}|nompageref}{8}

@@ -6,6 +6,7 @@
 \contentsline {subsection}{\numberline {3.2}Particle dynamics}{7}
 \contentsline {section}{\numberline {4}Numerical methods}{8}
 \contentsline {subsection}{\numberline {4.1}Direct numerical simulation}{8}
+\contentsline {subsection}{\numberline {4.2}Particle clustering}{8}
 \contentsline {section}{\numberline {5}Results}{10}
 \contentsline {subsection}{\numberline {5.1}Boundary conditions and simulation properties}{10}
 \contentsline {section}{\numberline {6}Conclusion}{11}
