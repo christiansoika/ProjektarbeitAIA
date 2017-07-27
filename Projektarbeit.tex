@@ -219,11 +219,16 @@ Due to the computational effort we will put $\vec{u}_{n+1}^\mathrm{(p)}$ on the 
 \newline
 The updated velocity and acceleration are calculated as
 \begin{equation}
-\vec{v}_{n+1} = \frac{\vec{v}_n + \frac{1}{2} \delta t \left(\vec{a}_n + \frac{f_\mathrm{D}}{\tau_\mathrm{p}}\vec{u}_{n+1}^\mathrm{(p)} + \vec{g} \right)}{1 + \frac{1}{2} \frac{f_\mathrm{D}}{\tau_\mathrm{p}} \delta t}
+\vec{v}_{n+1} = \frac{\vec{v}_n + \frac{1}{2} \delta t \left(\vec{a}_n + \frac{f_\mathrm{D}}{\tau_\mathrm{p}}\vec{u}_{n+1}^\mathrm{(p)} + \vec{g} \right)}{1 + \frac{1}{2} \frac{f_\mathrm{D}}{\tau_\mathrm{p}} \delta t},
 \end{equation}
 \begin{equation}
-\vec{a}_{n+1} = \frac{\vec{v}_n + \frac{1}{2} \delta t \left(\vec{u}_{n+1}^\mathrm{(p)} - \vec{v}_n - \frac{1}{2} \delta t \vec{a}_n \right) + \vec{g}}{1 + \frac{1}{2} \frac{f_\mathrm{D}}{\tau_\mathrm{p}} \delta t}
+\vec{a}_{n+1} = \frac{\frac{f_\mathrm{D}}{\tau_\mathrm{p}} \left(\vec{u}_{n+1}^\mathrm{(p)} - \vec{v}_n - \frac{1}{2} \delta t \vec{a}_n \right) + \vec{g}}{1 + \frac{1}{2} \frac{f_\mathrm{D}}{\tau_\mathrm{p}} \delta t}.
 \end{equation}
+The updated particle position must be corrected by an additional term according to the trapezoidal rule
+\begin{equation}
+\vec{x}_{n+1} = \vec{x}_n + \frac{1}{2} \delta t \left( \vec{v}_{n+1} + \vec{v}_{n} \right) + \frac{1}{12} \delta t^2 \left( \vec{a}_{n+1} - \vec{a}_n \right).
+\end{equation}
+
 \subsection{Particle clustering}
 \nomenclature{$m_\mathrm{c}$}{number of clustered particles}% ++ nomenclature funktioniert noch nicht! ++
 The high number of point particles require even more computational resources for the particle-laden simulation. The main idea to reduce this requirement is to create clusters of point particles, meaning that a new variable $m_\mathrm{c}$ is introduced. We consider a cluster of $m_\mathrm{c}$ point particles as one larger point particle, i.e. the programm has less particles to simulate. To compensate this lack of particles, the coupling force is multiplied by $m_\mathrm{c}$, due to the $m_\mathrm{c}$-fold mass of the (cluster-)particles. In chapter 5 (results) we evaluate the legitimacy of particle clustering and the maximum acceptable value of $m_\mathrm{c}$.
