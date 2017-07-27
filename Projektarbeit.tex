@@ -180,6 +180,13 @@ To simulate flows like those described above we have two options. The direct num
 \subsection{Direct numerical simulation}
 The basis of the direct numerical simulation (DNS) are the Navier-Stokes equations as described above. The idea is that the computer is very good at calculating and solves these equations completely. This provides us a very accurate result, as all scales of motion are being resolved. Still it requires an immense level of comptational resources which increases rapidly with the Reynolds number. These computational resources were not available until the 1970s \cite{turbulentFlows}.
 \newline
+<<<<<<< HEAD
+=======
+Simulating only the larger-scale motions is also called filtering, which means that the smaller-scale motions are filtered out. To model the filtered smaller-scale motions ususally a subgrid-scale (SGS) model is used and this method is also called an implicit LES (ILES) \cite{turbulentFlows}. %als Zitat die Dissertation TUM
+\subsection{Particle clustering}
+\nomenclature{$m_\mathrm{c}$}{number of clustered particles}
+The high number of point particles require even more computational resources for the particle-laden simulation. The main idea to reduce this requirement is to create clusters of point particles, meaning that a new variable $m_\mathrm{c}$
+>>>>>>> 39948b63283368b7526d3ec11f07ccdc158a6dce
 \pagebreak
 Pojektion (noComputationalParticles)
 implizite LES (Motivation fuer LES -  Pope Chapter 9, Bild 9.4), DNS
