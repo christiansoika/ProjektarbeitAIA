@@ -1,7 +1,13 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{onThePhysicalMechanismsOfTwoWayCouplingInParticleLadenIsotropicTurbulence}
+S.~Elgobashi A.~Ferrante.
+\newblock On the physical mechanisms of two-way coupling in particle-laden
+  isotropic turbulence.
+\newblock {\em Physics of Fluids}, 2003.
 
 \bibitem{computationalMethodsforMultiphaseFlow}
-Edited by~A.~Prosperetti and G.~Tryggvason.
+G.~Tryggvason A.~Prosperetti.
 \newblock {\em Computational Methods for Multiphase Flow}.
 \newblock Cambridge University Press, 2009.
 
@@ -26,6 +32,12 @@ S.~Elghobashi.
 S.~Fritz.
 \newblock Simulation isotroper turbulenz.
 \newblock study work, 2003.
+
+\bibitem{latticeBoltzmannSimulationOfTurbulentFlowLadenWithFiniteSizeParticles}
+L.-P.~Wang H.~Gao, H.~Li.
+\newblock Lattice boltzmann simulation of turbulent flow laden with finite-size
+  particles.
+\newblock {\em Computers and Mathematics with Applications}, 2013.
 
 \bibitem{ValidationOfParticleLadenLargeEddySimulationUsingHPCSystems}
 M.~Meinke K.~Fr\"ohlich, L.~Schneiders and W.~Schr\"oder.
