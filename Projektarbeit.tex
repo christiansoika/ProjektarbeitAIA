@@ -1,3 +1,4 @@
+\immediate\write18{makeindex \jobname.nlo -s nomencl.ist -o \jobname.nls}
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{tocloft}
@@ -60,14 +61,14 @@ they can be written in the so-called 'divergence form':
 \begin{equation}
   \frac{\partial{\vec{Q}}}{\partial{t}} + \vec\nabla \vec{H} = 0
 \end{equation}
-\nomenclature{$\vec\nabla$}{Nabla-operator} %Erstellt automatisch die Nomenclature-Liste
-\nomenclature{$\vec\Q$}{Container for conserved variables in the Navier-Stokes equations}
+\nomenclature{$\vec{\nabla}$}{Nabla-operator} %Erstellt automatisch die Nomenclature-Liste
+\nomenclature{$\vec{Q}$}{Container for conserved variables in the Navier-Stokes equations}
 \nomenclature{$\vec{H}$}{Container for fluctuating variables in the Navier-Stokes equations}
 It should be noted by the reader that this work only contains investigations about chemically inert fluids and particles, and that the simulation results
 only fit under this condition. The vector $ \vec{Q} $ contains all the variables which are conserved, i.e. the density $ \rho $, 
 the velocity $ \vec{u} $ and the specific inner energy $ E $: 
 \nomenclature{$\rho$}{Density}
-\nomenclature{$\vec\u$}{Three-dimensional velocity}
+\nomenclature{$\vec{u}$}{Three-dimensional velocity}
 \nomenclature{$E$}{Specific inner energy}
 \begin{equation}
  \vec{Q}= \left( \begin{array}{c}\rho\\\rho \vec{u}\\\rho E \end{array} \right)
@@ -153,7 +154,7 @@ Filterung (Fritz) ->Viskositaet durch numerischen Fehler, Smagorinksy nicht benu
 To get a usefull equation of motion for the particles in the flow, we use the Euler Lagrangian approach, as it is common in Direct Numerical Simulations (DNS) and Large Eddy Simulations (LES).
 In this work we deal with small and heavy particles, that have a spherical shape. Their radius $ r_p $ is even smaller than the Kolmogorov scale $ \eta $, but also large enough to neglect the Brownian motion. The density of the particles $ \rho_\mathrm{p} $ is much higher than that of the fluid $ \rho_\mathrm{f} $ . In addition due to the very low particle concentration we can neglect the influence of the particles on the mean flow and on each other. This simplification is called one-way coupling. That means that the particles can cross each other without any effect. That means particle collisions are neglected.
 After all this simplifications we obtain a simplified version of the Maxey-Riley equations. 
-\nomenclature{$r_p$}{Particle radius}
+\nomenclature{$r_\mathrm{p}$}{Particle radius}
 \nomenclature{$\eta$}{Kolomogorov scale}
 \nomenclature{$\rho_\mathrm{p}$}{Particle density}
 \begin{equation}
