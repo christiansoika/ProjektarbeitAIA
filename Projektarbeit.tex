@@ -64,7 +64,7 @@ they can be written in the so-called 'divergence form':
 \nomenclature{$\vec\Q$}{Container for conserved variables in the Navier-Stokes equations}
 \nomenclature{$\vec{H}$}{Container for fluctuating variables in the Navier-Stokes equations}
 It should be noted by the reader that this work only contains investigations about chemically inert fluids and particles, and that the simulation results
-only fit under this condition. The vector $ \vec{Q} $ contains all the variables which are conserved, i.e. the density $ \rho $, 
+only fit under this condition. The vector $ \vec{Q} $ contains the density $ \rho $, 
 the velocity $ \vec{u} $ and the specific inner energy $ E $: 
 \nomenclature{$\rho$}{Density}
 \nomenclature{$\vec\u$}{Three-dimensional velocity}
@@ -72,6 +72,7 @@ the velocity $ \vec{u} $ and the specific inner energy $ E $:
 \begin{equation}
  \vec{Q}= \left( \begin{array}{c}\rho\\\rho \vec{u}\\\rho E \end{array} \right)
 \end{equation}
+These variables are called the 'conserved' variables of the fluid.
 $ \vec{H} $ is the flux vector which stores all the floating variables and may be split up into two parts: 
 \begin{equation}
  \vec{H} = \vec{H^\mathrm{i}} + \vec{H^\mathrm{v}}
@@ -180,12 +181,10 @@ To simulate flows like those described above we have two options. The direct num
 \subsection{Direct numerical simulation}
 The basis of the direct numerical simulation (DNS) are the Navier-Stokes equations as described above. The idea is that the computer is very good at calculating and solves these equations completely. This provides us a very accurate result, as all scales of motion are being resolved. Still it requires an immense level of comptational resources which increases rapidly with the Reynolds number. These computational resources were not available until the 1970s \cite{turbulentFlows}.
 \newline
-
 Simulating only the larger-scale motions is also called filtering, which means that the smaller-scale motions are filtered out. To model the filtered smaller-scale motions ususally a subgrid-scale (SGS) model is used and this method is also called an implicit LES (ILES) \cite{turbulentFlows}. %als Zitat die Dissertation TUM
 \subsection{Particle clustering}
 \nomenclature{$m_\mathrm{c}$}{number of clustered particles}
 The high number of point particles require even more computational resources for the particle-laden simulation. The main idea to reduce this requirement is to create clusters of point particles, meaning that a new variable $m_\mathrm{c}$
->>>>>>> 39948b63283368b7526d3ec11f07ccdc158a6dce
 \pagebreak
 Pojektion (noComputationalParticles)
 implizite LES (Motivation fuer LES -  Pope Chapter 9, Bild 9.4), DNS
@@ -199,12 +198,14 @@ In this case the turbulence was simulated on a cubic grid using $64^3$,$96^3$,$1
 the case in which $256^3$ cells where used is carried out as DNS. Futher information can be gained by looking at \cite[p.344-357 for DNS and p. 558-639 for LES]{turbulentFlows}.
 For simplification, the special case of isotropic turbulence was used. For this idealised flow form the statistical 
 velocities are invariant in all directions of the grid. It follows that the flows velocity are invariant for rotations and reflections. 
-The turbulence was initialised using a seed-based random generator. To achieve physical results, the simulation was carried out  to timestep 150, 
-at which a restart file was written out. This procedure insures a fully developed turbulent 
-flow, which has emancipated from the initialisation. In this flow field, a specific number of spherical particles were injected. 
-The velocties of the fluid were interpolated for each particle to match the velocities of particles and fluid as accurately as possible.
+\newline
+The turbulence was initialised using a seed-based random generator. To achieve physical results, the simulation was carried out until timestep 150, 
+at which a restart file was written out. This procedure ensures a fully developed turbulent 
+flow, which has emancipated from the initialisation. In this flow field, a specific number of spherical particles were injected and in some case clustered (see chapter 'Particle Clustering' for further insight).
+At the time of their injection the velocities of the fluid were interpolated for each particle to match the velocities of both as accurately as possible.
 
-boundary conditions, for example Reynolds number?
+
+boundary conditions, for example Reynolds number
 
 %\begin{figure}
  %\centering %setzt das Bild mittig
@@ -213,7 +214,7 @@ boundary conditions, for example Reynolds number?
 % \label{} %setzt das Label
 %\end{figure}
 
-Graphen (particleFree rot, Laden gruen)
+
 \pagebreak
 \section{Conclusion}
 \pagebreak
