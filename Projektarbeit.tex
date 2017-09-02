@@ -50,6 +50,7 @@ in Computational Methods for Multiphase Flow ist auf den Seiten 3-9 ein interess
 \pagebreak
 \section{Mathematical models}
 \pagebreak
+Sollen wir hier noch isotrope Turbulenz etc. erklaeren? Entdimensionierung erklären (Christain), Kolmogorov Skala (Steffen), Stokes-Zahl, $\psi$ einführen als coupling rate einführen
 \subsection{Single-phase flow} %Christian
 In this section the mathematical basics for understanding and simulating turbulent flows are discussed. However, it should be pointed out that this is no
 complete treatise of the mathematical and physical basics. The reader can achieve further insight on this topic by looking at different books and papers, 
@@ -63,13 +64,15 @@ they can be written in the so-called 'divergence form':
   \frac{\partial{\vec{Q}}}{\partial{t}} + \vec\nabla \vec{H} = 0
 \end{equation}
 \nomenclature{$\vec\nabla$}{Nabla-operator} %Erstellt automatisch die Nomenclature-Liste
-\nomenclature{$\vec\Q$}{Container for conserved variables in the Navier-Stokes equations}
+\nomenclature{$\vec{Q}$}{Container for conserved variables in the Navier-Stokes equations}
 \nomenclature{$\vec{H}$}{Container for fluctuating variables in the Navier-Stokes equations}
 It should be noted by the reader that this work only contains investigations about chemically inert fluids and particles, and that the simulation results
 only fit under this condition. The vector $ \vec{Q} $ contains all the variables which are conserved, i.e. the density $ \rho_\mathrm{f} $, 
 the velocity $ \vec{u} $ and the specific inner energy $ E $: 
 \nomenclature{$\rho_\mathrm{f}$}{Fluid density}
 \nomenclature{$\vec\u$}{Three-dimensional velocity}
+\nomenclature{$\rho$}{Density}
+\nomenclature{$\vec{u}$}{Three-dimensional velocity}
 \nomenclature{$E$}{Specific inner energy}
 \begin{equation}
  \vec{Q}= \left( \begin{array}{c}\rho_\mathrm{f}\\\rho_\mathrm{f} \vec{u}\\\rho_\mathrm{f} E \end{array} \right)
@@ -260,6 +263,46 @@ The basis of the direct numerical simulation (DNS) are the Navier-Stokes equatio
 \newline
 \pagebreak
 Pojektion (noComputationalParticles)
+=======
+The basis of the direct numerical simulation (DNS) are the Navier-Stokes equations as described above. The idea is that the computer is very good at calculating and solves these equations completely. This provides a very accurate result, as all scales of motion are being resolved. Still it requires an immense level of comptational resources which increases rapidly with the Reynolds number. These computational resources were not available until the 1970s. Even though it is not advisable to resolve every scale of motion, if only the contained energy is of greatest interest. With the large-eddy simulation, as described below, the comptational effort is 99.98 \% less compared to DNS, which indeed is the fraction of the dissipative scale. This leaves 0.02 \% of the flow, which is correlative with the fraction of the energy-containing larger-scale \cite{turbulentFlows}.%zum Uebergang zu LES siehe Pope S. 352 und Fig. 9.4
+\subsection{Large-eddy simulation}
+Due to the fact that DNS is effortful and wasting resources if a fully resolved resolution is not required, large-eddy simulation (LES) was created to save time and resources. This is especially efficient if mainly the temproal energy trend is considered, because the energy containing larger-scale motion is completely resolved and the indeed small effects of the expensive smaller-scale motion are just modelled. Otherwise in DNS resolving the small dissipative scale would require most of the computational resources.
+\newline
+Simulating only the larger-scale motions is also called filtering, which means that the smaller-scale motions are filtered out. To model the filtered smaller-scale motions ususally a subgrid-scale (SGS) model is used. According to Hickel (2007) the interference between explicit SGS and the trunctation error can be exploited, i.e. the trunctation error can serve as model of the effects of unresolved scales, which is therefore an implicit SGS model. Thus we call it implicit LES (ILES) \cite{implicitLES}. %als Zitat die Dissertation TUM Hickel
+\subsection{Discretisation}
+To integrate the Lagrangian particle tracking equations, discussed above, a predictor-corrector scheme based on the trapezoidal rule for numerical integration
+\begin{equation}
+f (t + \delta t) \approx f(t) + \frac{\delta t}{2} \left[ \frac{\partial f(t)}{\partial t} + \frac{\partial f(t + \delta t)}{\partial t} \right ]
+\end{equation}
+is used.
+\newline
+The first step is the prediction of the new particle position $\vec{x}_{n+1}^\mathrm{(p)}$ using a Taylor expansion for a small time step $\delta t$
+\nomenclature{$\vec{x}}{particle position}% ++ nomenclature funktioniert noch nicht! ++
+\nomenclature{$\vec{v}}{particle velocity}% ++ nomenclature funktioniert noch nicht! ++
+\nomenclature{$\vec{a}}{particle acceleration}% ++ nomenclature funktioniert noch nicht! ++
+\begin{equation}
+\vec{x}_{n+1}^\mathrm{(p)} = \vec{x}_n + \delta t \vec{v}_n + \frac{1}{2} \delta t^2 \vec{a}_n.
+\end{equation}
+Due to the computational effort we will put $\vec{u}_{n+1}^\mathrm{(p)}$ on the level of the nearest cell fluid velocity.
+\newline
+The updated velocity and acceleration are calculated as
+\begin{equation}
+\vec{v}_{n+1} = \frac{\vec{v}_n + \frac{1}{2} \delta t \left(\vec{a}_n + \frac{f_\mathrm{D}}{\tau_\mathrm{p}}\vec{u}_{n+1}^\mathrm{(p)} + \vec{g} \right)}{1 + \frac{1}{2} \frac{f_\mathrm{D}}{\tau_\mathrm{p}} \delta t},
+\end{equation}
+\begin{equation}
+\vec{a}_{n+1} = \frac{\frac{f_\mathrm{D}}{\tau_\mathrm{p}} \left(\vec{u}_{n+1}^\mathrm{(p)} - \vec{v}_n - \frac{1}{2} \delta t \vec{a}_n \right) + \vec{g}}{1 + \frac{1}{2} \frac{f_\mathrm{D}}{\tau_\mathrm{p}} \delta t}.
+\end{equation}
+The updated particle position must be corrected by an additional term according to the trapezoidal rule
+\begin{equation}
+\vec{x}_{n+1} = \vec{x}_n + \frac{1}{2} \delta t \left( \vec{v}_{n+1} + \vec{v}_{n} \right) + \frac{1}{12} \delta t^2 \left( \vec{a}_{n+1} - \vec{a}_n \right).
+\end{equation}
+
+\subsection{Particle clustering}
+\nomenclature{$m_\mathrm{c}$}{number of clustered particles}% ++ nomenclature funktioniert noch nicht! ++
+The high number of point particles require even more computational resources for the particle-laden simulation. The main idea to reduce this requirement is to create clusters of point particles, meaning that a new variable $m_\mathrm{c}$ is introduced. We consider a cluster of $m_\mathrm{c}$ point particles as one larger point particle, i.e. the programm has less particles to simulate. To compensate this lack of particles, the coupling force is multiplied by $m_\mathrm{c}$, due to the $m_\mathrm{c}$-fold mass of the (cluster-)particles. In chapter 5 (results) we evaluate the legitimacy of particle clustering and the maximum acceptable value of $m_\mathrm{c}$.
+\pagebreak
+\newline
+Projektion (noComputationalParticles), Diskretisierung
 implizite LES (Motivation fuer LES -  Pope Chapter 9, Bild 9.4), DNS
 \pagebreak
 \section{Results}
@@ -275,6 +318,12 @@ The turbulence was initialised using a seed-based random generator. To achieve p
 at which a restart file was written out. This procedure insures a fully developed turbulent 
 flow, which has emancipated from the initialisation. In this flow field, a specific number of spherical particles where injected. 
 The velocties of the fluid where interpolated for each particle to match the velocities of particles and fluid as accurately as possible.
+flow, which has emancipated from the initialisation. In this flow field, a specific number of spherical particles were injected. 
+The velocties of the fluid were interpolated for each particle to match the velocities of particles and fluid as accurately as possible.
+
+Parameter der Simulationen
+Coupling Rate in Zusammenhang mit den unterscheidlichen noComputationalParticles
+
 boundary conditions, for example Reynolds number?
 %\begin{figure}
  %\centering %setzt das Bild mittig
